@@ -1,5 +1,14 @@
 #!/bin/sh
 export BIN="$PORTSDIR/bin"
+
+help() {
+    echo "$0 [i|r|u|h] [pkg]"
+    echo "  i | install [pkg]"
+    echo "  r | remove [pkg]"
+    echo "  u | upgrade [pkg]"
+    echo "  h | help"
+}
+
 if [ -n "$2" ]; then
     case "$1" in
         i|install)
@@ -14,11 +23,14 @@ if [ -n "$2" ]; then
             cd "$PORTSDIR/list/$2"
             ./uninstall
             ./install 
+            ;;
+        help)
+            help
             ;; 
         ""|*)
             echo Operation "'$1'" not supported
             ;;
     esac
 else
-    echo help message
+    help
 fi

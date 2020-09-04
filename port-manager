@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 export BIN="$PORTSDIR/bin"
 case "$1" in
     i|install)
@@ -7,7 +7,8 @@ case "$1" in
         ./install
         ;; 
     r|remove)
-        
+        cd "$PORTSDIR/list/$2"
+        ./uninstall
         ;;
     ""|*)
         echo unknown command

@@ -1,3 +1,4 @@
+#!/bin/sh
 git clone https://github.com/willeccles/cfm build
 cd build
 make

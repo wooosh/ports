@@ -1,21 +1,24 @@
 #!/bin/sh
 export BIN="$PORTSDIR/bin"
-case "$1" in
-    i|install)
-        # TODO: check if $2 is present
-        cd "$PORTSDIR/list/$2"
-        ./install
-        ;; 
-    r|remove)
-        cd "$PORTSDIR/list/$2"
-        ./uninstall
-        ;;
-    u|upgrade)
-        cd "$PORTSDIR/list/$2"
-        ./uninstall
-        ./install 
-        ;; 
-    ""|*)
-        echo Operation not supported
-        ;;
-esac
+if [ -n "$2" ]; then
+    case "$1" in
+        i|install)
+            cd "$PORTSDIR/list/$2"
+            ./install
+            ;; 
+        r|remove)
+            cd "$PORTSDIR/list/$2"
+            ./uninstall
+            ;;
+        u|upgrade)
+            cd "$PORTSDIR/list/$2"
+            ./uninstall
+            ./install 
+            ;; 
+        ""|*)
+            echo Operation "'$1'" not supported
+            ;;
+    esac
+else
+    echo help message
+fi

@@ -10,6 +10,11 @@ case "$1" in
         cd "$PORTSDIR/list/$2"
         ./uninstall
         ;;
+    u|upgrade)
+        cd "$PORTSDIR/list/$2"
+        ./uninstall
+        ./install 
+        ;; 
     ""|*)
         echo Operation not supported
         ;;

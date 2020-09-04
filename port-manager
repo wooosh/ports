@@ -11,6 +11,6 @@ case "$1" in
         ./uninstall
         ;;
     ""|*)
-        echo unknown command
+        echo Operation not supported
         ;;
 esac

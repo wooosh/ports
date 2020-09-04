@@ -1,0 +1,4 @@
+git clone https://github.com/willeccles/f build
+cd build 
+make
+cp f "$BIN/"

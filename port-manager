@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+export BIN="$PORTSDIR/bin"
+case "$1" in
+    i|install)
+        # TODO: check if $2 is present
+        cd "$PORTSDIR/list/$2"
+        ./install
+        ;; 
+    r|remove)
+        
+        ;;
+    ""|*)
+        echo unknown command
+        ;;
+esac

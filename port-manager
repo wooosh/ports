@@ -1,5 +1,6 @@
 #!/bin/sh
 export BIN="$PORTSDIR/bin"
+mkdir -p "$BIN"
 
 help() {
     echo "$0 [i|r|u|h] [pkg]"

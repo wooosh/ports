@@ -7,6 +7,7 @@ help() {
     echo "  i | install [pkg]"
     echo "  r | remove [pkg]"
     echo "  u | upgrade [pkg]"
+    echo "  i | info [pkg]"
     echo "  h | help"
 }
 
@@ -24,6 +25,11 @@ if [ -n "$2" ]; then
             cd "$PORTSDIR/list/$2"
             ./uninstall
             ./install 
+            ;;
+        i|info)
+            echo "$2"
+            echo
+            cat "$PORTSDIR/list/$2/info"
             ;;
         help)
             help

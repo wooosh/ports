@@ -1,0 +1,8 @@
+#!/bin/sh
+sudo xbps-install go gtk+3-devel libhandy1-devel gspell-devel
+git clone https://github.com/diamondburned/cchat-gtk build
+cp void.patch build/
+cd build
+git apply void.patch
+go build
+cp cchat-gtk "$BIN/"

@@ -1,0 +1,62 @@
+From 49689fbd3d5ab7eee89fc0c36aa0dd51b439a2f3 Mon Sep 17 00:00:00 2001
+From: wooosh <12696312+wooosh@users.noreply.github.com>
+Date: Sat, 5 Sep 2020 05:02:28 -0400
+Subject: [PATCH] fix void support by removing hyphens
+
+---
+ internal/ui/rich/labeluri/labeluri.go    | 4 ++--
+ internal/ui/rich/parser/hl/hl.go         | 2 +-
+ internal/ui/rich/parser/markup/markup.go | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/internal/ui/rich/labeluri/labeluri.go b/internal/ui/rich/labeluri/labeluri.go
+index 86a96ed..266b355 100644
+--- a/internal/ui/rich/labeluri/labeluri.go
++++ b/internal/ui/rich/labeluri/labeluri.go
+@@ -180,7 +180,7 @@ func NewPopoverMentioner(rel gtk.IWidget, input string, mention text.Mentioner)
+ 
+ func largeText(text string) string {
+ 	return fmt.Sprintf(
+-		`<span insert-hyphens="false" size="large">%s</span>`, html.EscapeString(text),
++		`<span size="large">%s</span>`, html.EscapeString(text),
+ 	)
+ }
+ 
+@@ -288,7 +288,7 @@ func bind(connector WidgetConnector, activator func(uri string, r gdk.Rectangle)
+ }
+ 
+ const urlPrompt = `This link leads to the following URL:
+-<span weight="bold" insert_hyphens="false"><a href="%[1]s">%[1]s</a></span>
++<span weight="bold"><a href="%[1]s">%[1]s</a></span>
+ Click <b>Open</b> to proceed.`
+ 
+ var warnLabelCSS = primitives.PrepareCSS(`
+diff --git a/internal/ui/rich/parser/hl/hl.go b/internal/ui/rich/parser/hl/hl.go
+index c60803c..1108b51 100644
+--- a/internal/ui/rich/parser/hl/hl.go
++++ b/internal/ui/rich/parser/hl/hl.go
+@@ -45,7 +45,7 @@ func Segments(appendmap *attrmap.AppendMap, src string, seg text.Codeblocker) {
+ 	appendmap.Span(
+ 		start, end,
+ 		`font_family="monospace"`,
+-		`insert_hyphens="false"`, // all my homies hate hyphens
++		//`insert_hyphens="false"`, // all my homies hate hyphens
+ 	)
+ 
+ 	if i := Tokenize(seg.CodeblockLanguage(), src[start:end]); i != nil {
+diff --git a/internal/ui/rich/parser/markup/markup.go b/internal/ui/rich/parser/markup/markup.go
+index ec30757..18ef1b9 100644
+--- a/internal/ui/rich/parser/markup/markup.go
++++ b/internal/ui/rich/parser/markup/markup.go
+@@ -18,7 +18,7 @@ import (
+ var Hyphenate = false
+ 
+ func hyphenate(text string) string {
+-	return fmt.Sprintf(`<span insert_hyphens="%t">%s</span>`, Hyphenate, text)
++	return fmt.Sprintf(`<span>%s</span>`, text)
+ }
+ 
+ // RenderOutput is the output of a render.
+-- 
+2.28.0
+

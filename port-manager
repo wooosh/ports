@@ -3,7 +3,7 @@ export BIN="$PORTSDIR/bin"
 mkdir -p "$BIN"
 
 help() {
-    echo "$0 [i|r|u|h] [pkg]"
+    echo "$(basename $0) [i|r|u|h] [pkg]"
     echo "  i | install [pkg]"
     echo "  r | remove [pkg]"
     echo "  u | upgrade [pkg]"

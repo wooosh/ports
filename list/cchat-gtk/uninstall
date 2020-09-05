@@ -1,0 +1,3 @@
+#!/bin/sh
+rm "$BIN/cchat-gtk"
+rm -rf build

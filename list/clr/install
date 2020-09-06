@@ -1,0 +1,6 @@
+#!/bin/sh
+sudo xbps-install base-devel
+git clone https://github.com/willeccles/clr build
+cd build
+make
+cp clr "$BIN/"

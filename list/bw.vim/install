@@ -1,3 +1,4 @@
+#!/bin/sh
 git clone https://github.com/wooosh/bw.vim build
 mkdir -p ~/.vim/colors/
 cp build/colors/bw.vim ~/.vim/colors/
